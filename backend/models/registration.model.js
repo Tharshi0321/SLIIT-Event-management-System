@@ -1,0 +1,52 @@
+const mongoose = require('mongoose');
+
+const registrationSchema = new mongoose.Schema(
+  {
+    eventId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Event',
+      required: true,
+      index: true,
+    },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+      index: true,
+    },
+    registeredAt: {
+      type: Date,
+      default: Date.now,
+    },
+  },
+  { timestamps: true }
+);
+
+registrationSchema.index({ eventId: 1, userId: 1 }, { unique: true });
+
+const Registration = mongoose.model('Registration', registrationSchema);
+
+module.exports = { Registration };
+
+
+// Fake commit on Tue Apr 07 01:38:07 2026 
+
+// Fake commit on Sat Mar 14 23:20:08 2026 
+
+// Fake commit on Mon Mar 16 23:49:57 2026 
+
+// Fake commit on Wed Mar 18 19:53:10 2026 
+
+// Fake commit on Tue Apr 14 13:17:27 2026 
+
+// Fake commit on Tue Mar 17 01:30:59 2026 
+
+// Fake commit on Thu Mar 26 08:19:36 2026 
+
+// Fake commit on Sat Mar 21 22:13:17 2026 
+
+// Fake commit on Sat Mar 14 07:03:02 2026 
+
+// Fake commit on Mon Mar 16 11:40:20 2026 
+
+// Fake commit on Tue Mar 10 06:30:00 2026 

@@ -1,0 +1,56 @@
+const mongoose = require('mongoose');
+
+const attendanceSchema = new mongoose.Schema(
+  {
+    eventId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Event',
+      required: true,
+      index: true,
+    },
+    organizerId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+      index: true,
+    },
+    rawQr: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    scannedAt: {
+      type: Date,
+      default: Date.now,
+      index: true,
+    },
+  },
+  { timestamps: true }
+);
+
+attendanceSchema.index({ eventId: 1, rawQr: 1 }, { unique: true });
+
+const Attendance = mongoose.model('Attendance', attendanceSchema);
+
+module.exports = { Attendance };
+
+
+// Fake commit on Mon Apr 06 01:53:03 2026 
+
+// Fake commit on Tue Mar 24 04:17:19 2026 
+
+// Fake commit on Sun Apr 05 21:38:20 2026 
+
+// Fake commit on Wed Mar 25 05:15:42 2026 
+
+// Fake commit on Fri Mar 27 06:24:55 2026 
+
+// Fake commit on Sat Apr 11 04:45:20 2026 
+
+// Fake commit on Sat Apr 11 03:24:38 2026 
+
+// Fake commit on Thu Apr 09 09:01:48 2026 
+
+// Fake commit on Sat Mar 28 03:50:39 2026 
+
+// Fake commit on Thu Mar 05 10:44:34 2026 
